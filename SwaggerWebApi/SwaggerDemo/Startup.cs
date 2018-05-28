@@ -42,7 +42,7 @@ namespace SwaggerDemo
             app.UseMvc();
 			app.UseSwaggerUI(c =>
 			{
-				c.SwaggerEndpoint("/swagger/v1/swagger.json", "Contacts API V1");
+				c.SwaggerEndpoint("/swagger/v1/swagger.json", "Todo API V1");
 			});
 			app.UseSwagger();
 		}
