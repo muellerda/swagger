@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TodoModule } from './todo/todo.module';
 import { ControlsModule } from './controls/controls.module';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ControlsModule } from './controls/controls.module';
     BrowserModule,
     CommonModule,
     ControlsModule,
+    HomeModule,
     TodoModule
   ],
   providers: [],
