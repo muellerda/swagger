@@ -7,7 +7,10 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "webapi:start": "cd ..//..//SwaggerWebApi//SwaggerDemo && dotnet run",
+    "webapi:restore": "cd ..//..//SwaggerWebApi//SwaggerDemo && dotnet restore",
+    "webapi:build": "cd ..//..//SwaggerWebApi//SwaggerDemo && dotnet build"
   },
   "private": true,
   "dependencies": {
