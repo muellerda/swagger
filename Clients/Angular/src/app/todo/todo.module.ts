@@ -4,12 +4,18 @@ import { TodoComponent } from './todo.component';
 import { ListComponent } from './list/list.component';
 import { EditComponent } from './edit/edit.component';
 import { TodoRoutingModule } from './todo-routing.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
-    TodoRoutingModule
+    TodoRoutingModule,
+    RouterModule
   ],
-  declarations: [TodoComponent, ListComponent, EditComponent]
+  declarations: [
+    TodoComponent,
+    ListComponent,
+    EditComponent
+  ]
 })
 export class TodoModule { }
