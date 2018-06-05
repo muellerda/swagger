@@ -3,16 +3,18 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e",
+    "dotnet": "cd ../../SwaggerWebApi/SwaggerDemo && dotnet",
+    "start": "concurrently --kill-others -p \"[{name}:{pid}] {time}\" -c \"cyan,magenta\" -n \"web,api\" -t \"YYYY-MM-DD HH:mm:ss.SSS\" \"ng serve\" \"cd ../../SwaggerWebApi/SwaggerDemo && dotnet run\"",
+    "client:build": "ng build",
+    "client:test": "ng test",
+    "client:e2e": "ng e2e",
+    "client:lint": "ng lint",
+    "client:start": "ng serve",
+    "client:generate:api": "java -jar ./bin/swagger-codegen-cli.jar generate -i http://localhost:1271/swagger/v1/swagger.json -l typescript-angular -o ./src/app/api",
     "webapi:start": "cd ../../SwaggerWebApi/SwaggerDemo && dotnet run",
     "webapi:restore": "cd ../../SwaggerWebApi/SwaggerDemo && dotnet restore",
     "webapi:build": "cd ../../SwaggerWebApi/SwaggerDemo && dotnet build",
-    "postinstall": "node --experimental-modules postinstall.mjs",
-    "generate:client": "java -jar ./bin/swagger-codegen-cli.jar generate -i http://localhost:1271/swagger/v1/swagger.json -l typescript-angular -o ./src/app/api"
+    "postinstall": "node --experimental-modules postinstall.mjs"
   },
   "private": true,
   "dependencies": {
@@ -43,6 +45,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "~4.2.1",
+    "concurrently": "^3.5.1",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~1.7.1",
