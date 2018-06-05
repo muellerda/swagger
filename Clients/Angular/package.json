@@ -8,10 +8,11 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "webapi:start": "cd ..//..//SwaggerWebApi//SwaggerDemo && dotnet run",
-    "webapi:restore": "cd ..//..//SwaggerWebApi//SwaggerDemo && dotnet restore",
-    "webapi:build": "cd ..//..//SwaggerWebApi//SwaggerDemo && dotnet build",
-    "postinstall": "node --experimental-modules postinstall.mjs"
+    "webapi:start": "cd ../../SwaggerWebApi/SwaggerDemo && dotnet run",
+    "webapi:restore": "cd ../../SwaggerWebApi/SwaggerDemo && dotnet restore",
+    "webapi:build": "cd ../../SwaggerWebApi/SwaggerDemo && dotnet build",
+    "postinstall": "node --experimental-modules postinstall.mjs",
+    "generate:client": "java -jar ./bin/swagger-codegen-cli.jar generate -i http://localhost:1271/swagger/v1/swagger.json -l typescript-angular -o ./src/app/api"
   },
   "private": true,
   "dependencies": {
@@ -29,7 +30,8 @@
     "jquery": "^3.3.1",
     "lodash": "^4.17.10",
     "popper.js": "^1.14.3",
-    "rxjs": "^6.0.0",
+    "rxjs": "^6.2.0",
+    "rxjs-compat": "^6.2.0",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
