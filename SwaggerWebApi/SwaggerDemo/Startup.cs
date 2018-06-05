@@ -22,8 +22,15 @@ namespace SwaggerDemo
         {
 	        services.AddDbContext<TodoContext>(opt =>
 		        opt.UseInMemoryDatabase("TodoList"));
+            services.AddCors(
+                options => options.AddPolicy(
+                    "AllowAll", 
+                    builder => builder
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .AllowAnyOrigin()
+                        .AllowCredentials()));
 			services.AddMvc();
-
 
 	        services.AddSwaggerGen(c =>
 	        {
@@ -39,6 +46,7 @@ namespace SwaggerDemo
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors("AllowAll");
             app.UseMvc();
 			app.UseSwaggerUI(c =>
 			{
