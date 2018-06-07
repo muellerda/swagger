@@ -39,7 +39,7 @@ namespace SwaggerDemo
 		        c.SwaggerDoc("v1", new Info { Title = "Todo API", Version = "v1" });
 
 		          c.IncludeXmlComments(System.String.Format(@"{0}\SwaggerDemo.xml",
-			          System.AppDomain.CurrentDomain.BaseDirectory));
+			         System.AppDomain.CurrentDomain.BaseDirectory));
 
 				c.DescribeAllEnumsAsStrings();
 			});
