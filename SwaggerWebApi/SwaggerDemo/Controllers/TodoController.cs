@@ -1,18 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using SwaggerDemo.Models;
 
 namespace SwaggerDemo.Controllers
 {
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <seealso cref="Microsoft.AspNetCore.Mvc.ControllerBase" />
 	[Route("api/[controller]")]
 	[Controller]
 	public class TodoController : ControllerBase
 	{
 		private readonly TodoContext _context;
-
 
 		public TodoController(TodoContext context)
 		{
@@ -25,28 +27,20 @@ namespace SwaggerDemo.Controllers
 			}
 		}
 
-		#region snippet_GetAll
+		/// <summary>Get all todo items</summary>
+		/// <returns></returns>
 		[HttpGet]
-		public List<TodoItem> GetAll()
+		[ProducesResponseType(typeof(IEnumerable<TodoItem>), (int)HttpStatusCode.OK)]
+		public IActionResult TodoItems()
 		{
-			return _context.TodoItems.ToList();
+			var items = _context.TodoItems;
+	
+			return Ok(items);
 		}
 
-		#region snippet_GetByID
-		[HttpGet("{id}", Name = "GetTodo")]
-		public TodoItem GetById(long id)
-		{
-			var item = _context.TodoItems.Find(id);
-			if (item == null)
-			{
-				return null;
-			}
-			return item;
-		}
-		#endregion
-		#endregion
-
-		#region snippet_Create
+		/// <summary>Creates a todo item.</summary>
+		/// <param name="item">The todo item.</param>
+		/// <returns></returns>
 		[HttpPost]
 		public IActionResult Create(TodoItem item)
 		{
@@ -55,10 +49,14 @@ namespace SwaggerDemo.Controllers
 
 			return CreatedAtRoute("GetTodo", new { id = item.Id }, item);
 		}
-		#endregion
 
-		#region snippet_Update
+		/// <summary>Updates the todo item by given id and item.</summary>
+		/// <param name="id">The identifier.</param>
+		/// <param name="item">The item.</param>
+		/// <returns></returns>
 		[HttpPut("{id}")]
+		[ProducesResponseType((int)HttpStatusCode.NoContent)]
+		[ProducesResponseType((int)HttpStatusCode.NotFound)]
 		public IActionResult Update(long id, TodoItem item)
 		{
 			var todo = _context.TodoItems.Find(id);
@@ -74,10 +72,13 @@ namespace SwaggerDemo.Controllers
 			_context.SaveChanges();
 			return NoContent();
 		}
-		#endregion
 
-		#region snippet_Delete
+		/// <summary>Deletes the todo item by specified id.</summary>
+		/// <param name="id">The identifier.</param>
+		/// <returns></returns>
 		[HttpDelete("{id}")]
+		[ProducesResponseType((int)HttpStatusCode.NoContent)]
+		[ProducesResponseType((int)HttpStatusCode.NotFound)]
 		public IActionResult Delete(long id)
 		{
 			var todo = _context.TodoItems.Find(id);
@@ -90,6 +91,5 @@ namespace SwaggerDemo.Controllers
 			_context.SaveChanges();
 			return NoContent();
 		}
-		#endregion
 	}
 }
