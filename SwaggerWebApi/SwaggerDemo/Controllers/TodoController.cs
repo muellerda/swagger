@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using SwaggerDemo.Models;
 
@@ -10,6 +11,7 @@ namespace SwaggerDemo.Controllers
 	/// 
 	/// </summary>
 	/// <seealso cref="Microsoft.AspNetCore.Mvc.ControllerBase" />
+	[EnableCors("AllowAll")]
 	[Route("api/[controller]")]
 	[Controller]
 	public class TodoController : ControllerBase

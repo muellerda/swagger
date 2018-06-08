@@ -21,17 +21,18 @@ export class ListComponent implements OnInit {
 
   public async addTodo() {
     try {
-      await this.todoService.apiTodoPost(null, this.currentTodoItem.name).toPromise();
-      this.todoItems = this.todoService.apiTodoGet();
-      this.currentTodoItem = { name: '' };
+      await this.todoService.apiTodoPost(undefined, this.currentTodoItem.name).toPromise();
     } catch (err) {
       console.log(err);
+    } finally {
+      this.todoItems = this.todoService.apiTodoGet();
+      this.currentTodoItem = { name: '' };
     }
   }
 
-  public async checkTodo(id: number) {
+  public async checkTodo(id: number, text: string) {
     try {
-      await this.todoService.apiTodoByIdPut(id, null, null, true).toPromise();
+      await this.todoService.apiTodoByIdPut(id, null, text, true).toPromise();
       this.todoItems = this.todoService.apiTodoGet();
     } catch (err) {
       console.log(err);

@@ -57,9 +57,9 @@ export class TodoService {
 
 
     /**
+     * Deletes the todo item by specified id.
      * 
-     * 
-     * @param id 
+     * @param id The identifier.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
@@ -96,52 +96,10 @@ export class TodoService {
     }
 
     /**
+     * Updates the todo item by given id and item.
      * 
-     * 
-     * @param id 
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public apiTodoByIdGet(id: number, observe?: 'body', reportProgress?: boolean): Observable<TodoItem>;
-    public apiTodoByIdGet(id: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<TodoItem>>;
-    public apiTodoByIdGet(id: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<TodoItem>>;
-    public apiTodoByIdGet(id: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-        if (id === null || id === undefined) {
-            throw new Error('Required parameter id was null or undefined when calling apiTodoByIdGet.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'text/plain',
-            'application/json',
-            'text/json'
-        ];
-        let httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set("Accept", httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        let consumes: string[] = [
-        ];
-
-        return this.httpClient.get<TodoItem>(`${this.basePath}/api/Todo/${encodeURIComponent(String(id))}`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * 
-     * 
-     * @param id 
-     * @param id2 
+     * @param id The identifier.
+     * @param id2 The identifier.
      * @param name 
      * @param isComplete 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -193,7 +151,7 @@ export class TodoService {
     }
 
     /**
-     * 
+     * Get all todo items
      * 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
@@ -231,7 +189,7 @@ export class TodoService {
     }
 
     /**
-     * 
+     * Creates a todo item.
      * 
      * @param id 
      * @param name 
