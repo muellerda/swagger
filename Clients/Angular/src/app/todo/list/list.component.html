@@ -3,7 +3,7 @@
 </div>
 <div class="col-12">
   <ul class="list-group" *ngFor='let todoItem of todoItems | async'>
-    <li class="list-group-item">{{ todoItem.name }}</li>
+    <li class="list-group-item">{{ todoItem.name }}<button type="submit" class="btn btn-danger btn-sm float-right" (click)="deleteTodo(todoItem.id)">Delete</button></li>
   </ul>
 </div>
 <br/>
