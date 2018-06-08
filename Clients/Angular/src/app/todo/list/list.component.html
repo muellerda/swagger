@@ -3,7 +3,12 @@
 </div>
 <div class="col-12">
   <ul class="list-group" *ngFor='let todoItem of todoItems | async'>
-    <li class="list-group-item">{{ todoItem.name }}<button type="submit" class="btn btn-danger btn-sm float-right" (click)="deleteTodo(todoItem.id)">Delete</button></li>
+    <li class="list-group-item">
+      <span *ngIf="todoItem.isComplete">&#9989;</span>
+      <span>{{ todoItem.name }}</span>
+      <button type="submit" class="btn btn-danger btn-sm float-right mr-1" (click)="deleteTodo(todoItem.id)">Delete</button>
+      <button type="submit" *ngIf="!todoItem.isComplete" class="btn btn-secondary btn-sm float-right" (click)="checkTodo(todoItem.id)">Check</button>
+    </li>
   </ul>
 </div>
 <br/>

@@ -29,6 +29,15 @@ export class ListComponent implements OnInit {
     }
   }
 
+  public async checkTodo(id: number) {
+    try {
+      await this.todoService.apiTodoByIdPut(id, null, null, true).toPromise();
+      this.todoItems = this.todoService.apiTodoGet();
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   public async deleteTodo(id: number) {
     try {
       await this.todoService.apiTodoByIdDelete(id).toPromise();
