@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  API_BASE_PATH: 'http://localhost:1271'
-  // API_BASE_PATH: 'http://sdxswaggerdemo.azurewebsites.net'
+  // API_BASE_PATH: 'http://localhost:1271'
+  API_BASE_PATH: 'http://sdxswaggerdemo.azurewebsites.net'
 };
 
 /*

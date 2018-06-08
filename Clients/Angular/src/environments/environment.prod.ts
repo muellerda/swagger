@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  API_BASE_PATH: 'http://localhost:1271'
+  API_BASE_PATH: 'http://sdxswaggerdemo.azurewebsites.net'
 };

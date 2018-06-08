@@ -22,11 +22,10 @@ export class ListComponent implements OnInit {
   public async addTodo() {
     try {
       await this.todoService.apiTodoPost(undefined, this.currentTodoItem.name).toPromise();
-    } catch (err) {
-      console.log(err);
-    } finally {
       this.todoItems = this.todoService.apiTodoGet();
       this.currentTodoItem = { name: '' };
+    } catch (err) {
+      console.log(err);
     }
   }
 
