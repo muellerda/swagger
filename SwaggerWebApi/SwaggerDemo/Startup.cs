@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System.IO;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.PlatformAbstractions;
 using SwaggerDemo.Models;
 using Swashbuckle.AspNetCore.Swagger;
 
@@ -35,7 +37,12 @@ namespace SwaggerDemo
 	        services.AddSwaggerGen(c =>
 	        {
 		        c.SwaggerDoc("v1", new Info { Title = "Todo API", Version = "v1" });
-	        });
+
+		          c.IncludeXmlComments(System.String.Format(@"{0}\SwaggerDemo.xml",
+			         System.AppDomain.CurrentDomain.BaseDirectory));
+
+				c.DescribeAllEnumsAsStrings();
+			});
 		}
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,9 +55,11 @@ namespace SwaggerDemo
 
             app.UseCors("AllowAll");
             app.UseMvc();
+	        app.UseStaticFiles();
 			app.UseSwaggerUI(c =>
 			{
 				c.SwaggerEndpoint("/swagger/v1/swagger.json", "Todo API V1");
+
 			});
 			app.UseSwagger();
 		}

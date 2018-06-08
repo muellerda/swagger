@@ -17,6 +17,9 @@ namespace SwaggerDemo.RestApi
     /// </summary>
     public static partial class TodoAPIExtensions
     {
+            /// <summary>
+            /// Get all todo items
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -25,6 +28,9 @@ namespace SwaggerDemo.RestApi
                 return operations.ApiTodoGetAsync().GetAwaiter().GetResult();
             }
 
+            /// <summary>
+            /// Get all todo items
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -39,6 +45,9 @@ namespace SwaggerDemo.RestApi
                 }
             }
 
+            /// <summary>
+            /// Creates a todo item.
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -53,6 +62,9 @@ namespace SwaggerDemo.RestApi
                 operations.ApiTodoPostAsync(id, name, isComplete).GetAwaiter().GetResult();
             }
 
+            /// <summary>
+            /// Creates a todo item.
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -70,38 +82,17 @@ namespace SwaggerDemo.RestApi
                 (await operations.ApiTodoPostWithHttpMessagesAsync(id, name, isComplete, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
+            /// <summary>
+            /// Updates the todo item by given id and item.
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='id'>
-            /// </param>
-            public static TodoItem ApiTodoByIdGet(this ITodoAPI operations, long id)
-            {
-                return operations.ApiTodoByIdGetAsync(id).GetAwaiter().GetResult();
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='id'>
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<TodoItem> ApiTodoByIdGetAsync(this ITodoAPI operations, long id, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ApiTodoByIdGetWithHttpMessagesAsync(id, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='id'>
+            /// The identifier.
             /// </param>
             /// <param name='id1'>
+            /// The identifier.
             /// </param>
             /// <param name='name'>
             /// </param>
@@ -112,12 +103,17 @@ namespace SwaggerDemo.RestApi
                 operations.ApiTodoByIdPutAsync(id, id1, name, isComplete).GetAwaiter().GetResult();
             }
 
+            /// <summary>
+            /// Updates the todo item by given id and item.
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='id'>
+            /// The identifier.
             /// </param>
             /// <param name='id1'>
+            /// The identifier.
             /// </param>
             /// <param name='name'>
             /// </param>
@@ -131,20 +127,28 @@ namespace SwaggerDemo.RestApi
                 (await operations.ApiTodoByIdPutWithHttpMessagesAsync(id, id1, name, isComplete, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
+            /// <summary>
+            /// Deletes the todo item by specified id.
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='id'>
+            /// The identifier.
             /// </param>
             public static void ApiTodoByIdDelete(this ITodoAPI operations, long id)
             {
                 operations.ApiTodoByIdDeleteAsync(id).GetAwaiter().GetResult();
             }
 
+            /// <summary>
+            /// Deletes the todo item by specified id.
+            /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='id'>
+            /// The identifier.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.

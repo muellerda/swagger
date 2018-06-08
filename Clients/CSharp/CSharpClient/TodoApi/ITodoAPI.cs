@@ -34,6 +34,9 @@ namespace SwaggerDemo.RestApi
         JsonSerializerSettings DeserializationSettings { get; }
 
 
+        /// <summary>
+        /// Get all todo items
+        /// </summary>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -42,6 +45,9 @@ namespace SwaggerDemo.RestApi
         /// </param>
         Task<HttpOperationResponse<IList<TodoItem>>> ApiTodoGetWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
+        /// <summary>
+        /// Creates a todo item.
+        /// </summary>
         /// <param name='id'>
         /// </param>
         /// <param name='name'>
@@ -56,19 +62,14 @@ namespace SwaggerDemo.RestApi
         /// </param>
         Task<HttpOperationResponse> ApiTodoPostWithHttpMessagesAsync(long? id = default(long?), string name = default(string), bool? isComplete = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
+        /// <summary>
+        /// Updates the todo item by given id and item.
+        /// </summary>
         /// <param name='id'>
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<HttpOperationResponse<TodoItem>> ApiTodoByIdGetWithHttpMessagesAsync(long id, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <param name='id'>
+        /// The identifier.
         /// </param>
         /// <param name='id1'>
+        /// The identifier.
         /// </param>
         /// <param name='name'>
         /// </param>
@@ -82,7 +83,11 @@ namespace SwaggerDemo.RestApi
         /// </param>
         Task<HttpOperationResponse> ApiTodoByIdPutWithHttpMessagesAsync(long id, long id1, string name = default(string), bool? isComplete = default(bool?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
+        /// <summary>
+        /// Deletes the todo item by specified id.
+        /// </summary>
         /// <param name='id'>
+        /// The identifier.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
