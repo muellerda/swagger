@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using SwaggerDemo.Models;
 
@@ -11,7 +10,6 @@ namespace SwaggerDemo.Controllers
 	/// 
 	/// </summary>
 	/// <seealso cref="Microsoft.AspNetCore.Mvc.ControllerBase" />
-	[EnableCors("AllowAll")]
 	[Route("api/[controller]")]
 	[Controller]
 	public class TodoController : ControllerBase
@@ -49,7 +47,7 @@ namespace SwaggerDemo.Controllers
 			_context.TodoItems.Add(item);
 			_context.SaveChanges();
 
-			return CreatedAtRoute("GetTodo", new { id = item.Id }, item);
+			return Ok(new { id = item.Id });
 		}
 
 		/// <summary>Updates the todo item by given id and item.</summary>
