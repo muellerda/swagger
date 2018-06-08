@@ -6,3 +6,14 @@
     <li class="list-group-item">{{ todoItem.name }}</li>
   </ul>
 </div>
+<br/>
+<div class="col-12">
+  <form>
+    <div class="form-group">
+      <label for="todoText" class="sr-only">ToDo Text</label>
+      <input type="text" id="todoText" name="todoText" [(ngModel)]="currentTodoItem.name" class="form-control" aria-describedby="todoHelp" placeholder="Enter ToDo text">
+      <small id="todoHelp" class="form-text text-muted">Enter your ToDo text here.</small>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="addTodo()" >Submit</button>
+  </form>
+</div>

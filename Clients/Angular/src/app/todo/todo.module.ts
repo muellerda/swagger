@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { TodoComponent } from './todo.component';
 import { ListComponent } from './list/list.component';
 import { EditComponent } from './edit/edit.component';
@@ -12,6 +13,7 @@ import { environment } from 'src/environments/environment';
   imports: [
     ApiModule,
     CommonModule,
+    FormsModule,
     TodoRoutingModule,
     RouterModule
   ],

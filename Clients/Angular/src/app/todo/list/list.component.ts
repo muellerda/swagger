@@ -8,12 +8,24 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
+
   public todoItems: Observable<TodoItem[]>;
 
-  constructor(private readonly todoService: TodoService) { }
+  public currentTodoItem: TodoItem = { name: '' };
 
-  ngOnInit() {
+  public constructor(private readonly todoService: TodoService) { }
+
+  public ngOnInit() {
     this.todoItems = this.todoService.apiTodoGet();
   }
 
+  public async addTodo(text: string) {
+    try {
+      await this.todoService.apiTodoPost(null, this.currentTodoItem.name).toPromise();
+      this.todoItems = this.todoService.apiTodoGet();
+      this.currentTodoItem = { name: '' };
+    } catch (err) {
+      console.log(err);
+    }
+  }
 }
